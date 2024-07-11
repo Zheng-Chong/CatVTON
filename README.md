@@ -2,7 +2,7 @@
 # CatVTON
 
 [[`ArXiv(soon)`]()]
-[[`Demo`](https://0742dc8730a5a94a7a.gradio.live)]
+[[`Demo`](http://120.76.142.206:8888)]
 
 This repository is the official implementation of ***CatVTON: Concatenation Is All You Need for Virtual Try-On with Diffsuion Models***.
 
