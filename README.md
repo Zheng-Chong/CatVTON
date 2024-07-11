@@ -5,7 +5,8 @@
 [[`Demo`](https://0742dc8730a5a94a7a.gradio.live)]
 
 This repository is the official implementation of ***CatVTON: Concatenation Is All You Need for Virtual Try-On with Diffsuion Models***.
-**CatVTON** is a simple and efficient virtual try-on diffusion model with ***1) Lightweight Network (899.06M parameters totally)***, ***2) Parameter-Efficient Training (49.57M parameters trainable)*** and ***3) Simplified Inference (< 8G RAM for 1024X768 resolution)***.
+
+**CatVTON** is a simple and efficient virtual try-on diffusion model with ***1) Lightweight Network (899.06M parameters totally)***, ***2) Parameter-Efficient Training (49.57M parameters trainable)*** and ***3) Simplified Inference (< 8G VRAM for 1024X768 resolution)***.
 
 **<u>Our paper and code are coming soon</u>**  🤗
 
