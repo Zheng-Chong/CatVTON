@@ -2,22 +2,23 @@
 
 # <center> 🐈 CatVTON: Concatenation Is All You Need for Virtual Try-On with Diffusion Models
 
-<p align="center">
-  <a href="https://github.com/Zheng-Chong/CatVTON">
+<div style="display: flex; justify-content: center; align-items: center;">
+  <a href="https://github.com/Zheng-Chong/CatVTON" style="margin: 0 2px;">
     <img src='https://img.shields.io/badge/arXiv-Paper(soon)-red?style=flat&logo=arXiv&logoColor=red' alt='arxiv'>
   </a>
-  <a href="http://120.76.142.206:8888">
+  <a href="http://120.76.142.206:8888" style="margin: 0 2px;">
     <img src='https://img.shields.io/badge/Demo-Gradio-orange?style=flat&logo=Gradio&logoColor=red' alt='Demo'>
   </a>
-  <a href='https://huggingface.co/zhengchong/CatVTON'>
+  <a href='https://huggingface.co/zhengchong/CatVTON' style="margin: 0 2px;">
     <img src='https://img.shields.io/badge/Hugging Face-ckpts-orange?style=flat&logo=HuggingFace&logoColor=orange' alt='huggingface'>
   </a>
-  <a href="https://github.com/Zheng-Chong/CatVTON">
+  <a href="https://github.com/Zheng-Chong/CatVTON" style="margin: 0 2px;">
     <img src='https://img.shields.io/badge/GitHub-Repo-blue?style=flat&logo=GitHub' alt='GitHub'>
   </a>
-    <a href="https://github.com/Zheng-Chong/CatVTON/LICENCE"><img src='https://img.shields.io/badge/License-CC BY--NC--SA--4.0-lightgreen?style=flat&logo=Lisence' alt='License'>
+  <a href="https://github.com/Zheng-Chong/CatVTON/LICENCE" style="margin: 0 2px;">
+    <img src='https://img.shields.io/badge/License-CC BY--NC--SA--4.0-lightgreen?style=flat&logo=Lisence' alt='License'>
   </a>
-</p>
+</div>
 
 <div align="center">
   <img src="resource/img/teaser.jpg" width="100%" height="100%"/>
@@ -29,10 +30,21 @@
 
 
 ## Updates
-- **`2024/7/21`**: Our **Inference Code** and [**🤗Weights**](https://huggingface.co/zhengchong/CatVTON) are released.
-- **`2024/7/11`**: [**Online Demo**](http://120.76.142.206:8888) is released.
+- **`2024/7/22`**: Our [**App Code**](https://github.com/Zheng-Chong/CatVTON/blob/main/app.py) is released, deploy and enjoy CatVTON on your own mechine 🎉!
+- **`2024/7/21`**: Our [**Inference Code**](https://github.com/Zheng-Chong/CatVTON/blob/main/inference.py) and [**Weights** 🤗](https://huggingface.co/zhengchong/CatVTON) are released.
+- **`2024/7/11`**: Our [**Online Demo**](http://120.76.142.206:8888) is released 😁.
 
 
+## Deployment (Gradio App)
+To deploy the Gradio App for CatVTON on your own mechine, just run the following command, and checkpoints will be automaticly download from HuggingFace.
+
+```PowerShell
+CUDA_VISIBLE_DEVICES=0 python app.py \
+--output_dir="resource/demo/output" \
+--mixed_precision="bf16" \
+--allow_tf32 
+```
+When using `bf16` precision, generating results with a resolution of `1024x768` only requires about `8G` VRAM.
 
 ## Inference
 ### Data Preparation

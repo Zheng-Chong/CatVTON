@@ -213,9 +213,8 @@ class AutoMasker:
             (part_mask_of(['Left-arm', 'Right-arm', 'Left-leg', 'Right-leg'], schp_atr_mask, ATR_MAPPING) | \
              part_mask_of(['Left-arm', 'Right-arm', 'Left-leg', 'Right-leg'], schp_lip_mask, LIP_MAPPING))
         face_protect_area = part_mask_of('Face', schp_lip_mask, LIP_MAPPING)
-        accessory_protect_area = part_mask_of((accessory_parts := ['Hat', 'Glove', 'Sunglasses', 'Bag', 'Left-shoe', 'Right-shoe', 'Scarf', 'Socks']), schp_lip_mask, LIP_MAPPING) | \
-            part_mask_of(accessory_parts, schp_atr_mask, ATR_MAPPING) 
-        strong_protect_area = hands_protect_area | face_protect_area | accessory_protect_area
+
+        strong_protect_area = hands_protect_area | face_protect_area 
 
         # Weak Protect Area (Hair, Irrelevant Clothes, Body Parts)
         body_protect_area = part_mask_of(PROTECT_BODY_PARTS[part], schp_lip_mask, LIP_MAPPING) | part_mask_of(PROTECT_BODY_PARTS[part], schp_atr_mask, ATR_MAPPING)
@@ -223,7 +222,9 @@ class AutoMasker:
             part_mask_of(['Hair'], schp_atr_mask, ATR_MAPPING)
         cloth_protect_area = part_mask_of(PROTECT_CLOTH_PARTS[part]['LIP'], schp_lip_mask, LIP_MAPPING) | \
             part_mask_of(PROTECT_CLOTH_PARTS[part]['ATR'], schp_atr_mask, ATR_MAPPING)
-        weak_protect_area = body_protect_area | cloth_protect_area | hair_protect_area | strong_protect_area
+        accessory_protect_area = part_mask_of((accessory_parts := ['Hat', 'Glove', 'Sunglasses', 'Bag', 'Left-shoe', 'Right-shoe', 'Scarf', 'Socks']), schp_lip_mask, LIP_MAPPING) | \
+            part_mask_of(accessory_parts, schp_atr_mask, ATR_MAPPING) 
+        weak_protect_area = body_protect_area | cloth_protect_area | hair_protect_area | strong_protect_area | accessory_protect_area
         
         # Mask Area
         strong_mask_area = part_mask_of(MASK_CLOTH_PARTS[part], schp_lip_mask, LIP_MAPPING) | \
