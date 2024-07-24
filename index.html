@@ -21,20 +21,20 @@
 
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
         rel="stylesheet">
-  <link rel="stylesheet" href="css/bulma.min.css">
-  <link rel="stylesheet" href="css/bulma-carousel.min.css">
-  <link rel="stylesheet" href="css/bulma-slider.min.css">
-  <link rel="stylesheet" href="css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="resource/css/bulma.min.css">
+  <link rel="stylesheet" href="resource/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="resource/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="resource/css/fontawesome.all.min.css">
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  <link rel="stylesheet" href="css/index.css">
-  <link rel="icon" href="images/favicon.svg">
+  <link rel="stylesheet" href="resource/css/index.css">
+  <link rel="icon" href="resource/images/favicon.svg">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="js/fontawesome.all.min.js"></script>
-  <script src="js/bulma-carousel.min.js"></script>
-  <script src="js/bulma-slider.min.js"></script>
-  <script src="js/index.js"></script>
+  <script defer src="resource/js/fontawesome.all.min.js"></script>
+  <script src="resource/js/bulma-carousel.min.js"></script>
+  <script src="resource/js/bulma-slider.min.js"></script>
+  <script src="resource/js/index.js"></script>
 </head>
 <body>
 
@@ -139,7 +139,7 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <img src="img/teaser.jpg" alt="teaser">
+      <img src="resource/img/teaser.jpg" alt="teaser">
       <p>
         CatVTON is a simple and efficient virtual try-on diffusion model with 1) Lightweight Network (899.06M parameters totally),
          2) Parameter-Efficient Training (49.57M parameters trainable) and 3) Simplified Inference (< 8G VRAM for 1024X768 
@@ -195,7 +195,7 @@
       <div class="column is-full-width">
         <h2 class="title is-3">Architecture</h2>
         <div class="content has-text-justified">
-          <img src="img/architecture.jpg">
+          <img src="resource/img/architecture.jpg">
           <p>
             Our method achieves the high-quality try-on by simply concatenating the conditional image (garment or reference person) 
             with the target person image in the spatial dimension, ensuring they remain in the same feature space throughout the 
@@ -218,7 +218,7 @@
             requires the heavy ReferenceNet for additional garment encoding; it only needs simple concatenation of the garment 
             and person images as input to obtain high-quality try-on results.
           </p>
-          <img src="img/structure.jpg">
+          <img src="resource/img/structure.jpg">
         </div>
       </div>
 
@@ -233,7 +233,7 @@
               area proportional to the parameter number. CatVTON achieves lower FID on the VITONHD dataset with fewer total 
               parameters, trainable parameters, and memory usage.
             </p>
-            <img src="img/efficency.jpg">
+            <img src="resource/img/efficency.jpg">
           </div>
 
         </div>

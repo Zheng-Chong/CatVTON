@@ -5,3 +5,4 @@ resource/demo/output
 resource/demo/example/.DS_Store
 model/SCHP/*/__pycache__
 densepose_
+.vscode
