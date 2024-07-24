@@ -223,8 +223,8 @@ HEADER = """
   <a href="http://120.76.142.206:8888" style="margin: 0 2px;">
     <img src='https://img.shields.io/badge/Demo-Gradio-gold?style=flat&logo=Gradio&logoColor=red' alt='Demo'>
   </a>
-  <a href='https://huggingface.co/zhengchong/CatVTON' style="margin: 0 2px;">
-    <img src='https://img.shields.io/badge/Webpage-Project(soon)-silver?style=flat&logo=&logoColor=orange' alt='webpage'>
+  <a href='https://zheng-chong.github.io/CatVTON/' style="margin: 0 2px;">
+    <img src='https://img.shields.io/badge/Webpage-Project-silver?style=flat&logo=&logoColor=orange' alt='webpage'>
   </a>
   <a href="https://github.com/Zheng-Chong/CatVTON/LICENCE" style="margin: 0 2px;">
     <img src='https://img.shields.io/badge/License-CC BY--NC--SA--4.0-lightgreen?style=flat&logo=Lisence' alt='License'>
