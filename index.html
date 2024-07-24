@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Fashion Matrix: Editing Your Photo by Just Talking">
+  <meta name="keywords" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Fashion Matrix: Editing Your Photo by Just Talking</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">🐈 CatVTON: Concatenation Is All You Need for Virtual Try-On with Diffusion Models</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="">Zheng Chong</a><sup>1,3</sup>,</span>
+            <span class="author-block">
+              <a href="">Xiao Dong</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="">Haoxiang Li</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a href="">Shiyue Zhang</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="">Wenqing Zhang</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+                <a href="">Xujie Zhang</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+                <a href="">Hanqing Zhao</a><sup>3,4</sup>,
+            </span>
+            <span class="author-block">
+              <a href="">Xiaodan Liang</a><sup>*1,3</sup>,
+            </span>
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Sun Yat-Sen University,</span>
+            <span class="author-block"><sup>2</sup>Pixocial Technology,</span>
+            <span class="author-block"><sup>3</sup>Peng Cheng Laboratory,</span>
+            <span class="author-block"><sup>4</sup>SIAT</span>
+
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2407.15886"
+                    class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!--  Arxiv Link. -->
+              <span class="link-block">
+                <a href="http://arxiv.org/abs/2407.15886"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!--  Demo Link. -->
+              <span class="link-block">
+                <a href="http://120.76.142.206:8888"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-gamepad"></i>
+                  </span>
+                  <span>Demo</span>
+                  </a>
+              </span>
+              <!-- Models Link. -->
+              <span class="link-block">
+                <a href="https://huggingface.co/zhengchong/CatVTON"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-huggingface"></i>
+                  </span>
+                  <span>Models</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/Zheng-Chong/CatVTON"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img src="./resource/img/teaser.jpg" alt="teaser">
+      <h2 class="subtitle has-text-centered">
+        CatVTON is a simple and efficient virtual try-on diffusion model with 1) Lightweight Network (899.06M parameters totally),
+         2) Parameter-Efficient Training (49.57M parameters trainable) and 3) Simplified Inference (< 8G VRAM for 1024X768 
+         resolution).
+      </h2>
+    </div>
+  </div>
+</section>
+
+<!-- Abstract -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Virtual try-on methods based on diffusion models achieve realistic try-on effects but replicate the backbone network 
+            as a ReferenceNet or leverage additional image encoders to process condition inputs, resulting in high training and 
+            inference costs. 
+            In this work, we rethink the necessity of ReferenceNet and image encoders and innovate the interaction between garment 
+            and person, proposing CatVTON, a simple and efficient virtual try-on diffusion model. It facilitates the seamless 
+            transfer of in-shop or worn garments of arbitrary categories to target persons by simply concatenating them in spatial 
+            dimensions as inputs. The efficiency of our model is demonstrated in three aspects: 
+          </p>
+          <p>
+            (1) Lightweight network. Only the original diffusion modules are used, without additional network modules. The text 
+            encoder and cross attentions for text injection in the backbone are removed, further reducing the parameters by 167.02M.
+          </p>
+          <p> 
+            (2) Parameter-efficient training. We identified the try-on relevant modules through experiments and achieved 
+            high-quality try-on effects by training only 49.57M parameters (~5.51% of the backbone network’s parameters). 
+          </p>
+          <p>
+            (3) Simplified inference. CatVTON eliminates all unnecessary conditions and preprocessing steps, including 
+            pose estimation, human parsing, and text input, requiring only garment reference, target person image, and mask for 
+            the virtual try-on process. 
+          </p>
+          <p> 
+            Extensive experiments demonstrate that CatVTON achieves superior qualitative and 
+            quantitative results with fewer prerequisites and trainable parameters than baseline methods. Furthermore, 
+            CatVTON shows good generalization in in-the-wild scenarios despite using open-source datasets with only 73K samples.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+    <!-- <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe width="1080" height="1032" src="https://www.youtube.com/embed/1z-v0RSleMg"
+                  title="Fashion Matrix: Editing Your Photo by Just Talking" frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen></iframe>
+
+        </div>
+      </div>
+    </div> -->
+    <!--/ Paper video. -->
+
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Architecture. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Architecture</h2>
+        <div class="content has-text-justified">
+          <img src="./resource/img/architecture.jpg">
+          <p>
+            Our method achieves the high-quality try-on by simply concatenating the conditional image (garment or reference person) 
+            with the target person image in the spatial dimension, ensuring they remain in the same feature space throughout the 
+            diffusion process. Only the self-attention parameters, which provide global interaction, are learnable during training.
+             Unnecessary cross-attention for text interaction is omitted, and no additional conditions, such as pose and parsing, 
+             are required. These factors result in a lightweight network with minimal trainable parameters and simplified inference.
+          </p>
+          
+        </div>
+      </div>
+    </div>
+    <!-- Two Columns -->
+    <div class="columns is-centered">
+      <!-- Visual Effects. -->
+      <div class="column">
+        <div class="content">
+          <h2 class="title is-3">Structure Comparison</h2>
+          <p>
+            Simple structure comparison of different kinds of try-on methods. Our approach neither relies on warped garments nor 
+            requires the heavy ReferenceNet for additional garment encoding; it only needs simple concatenation of the garment 
+            and person images as input to obtain high-quality try-on results.
+          </p>
+          <img src="./resource/img/structure.jpg">
+        </div>
+      </div>
+
+      <!-- Efficiency Comparison -->
+      <div class="column">
+        <h2 class="title is-3">Efficiency Comparison</h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <p>
+              Efficiency comparison with diffusion-based try-on methods. Each method is represented by two concentric circles, 
+              where the outer circle denotes the total parameters and the inner circle denotes the trainable parameters, with the 
+              area proportional to the parameter number. CatVTON achieves lower FID on the VITONHD dataset with fewer total 
+              parameters, trainable parameters, and memory usage.
+            </p>
+            <img src="./resource/img/efficency.jpg">
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Demo -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Online Demo</h2>
+        <div class="content has-text-justified">
+          <iframe src="http://120.76.142.206:8888" width="" height=""  frameborder="1/0"  name="demo"  scrolling="yes/no/auto">   
+          </iframe>          
+        </div>
+      </div>
+    </div>
+
+    <!-- Concurrent Work. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Acknowledgement</h2>
+        <div class="content has-text-justified">
+          <p>
+            Our code is modified based on <a href="https://github.com/huggingface/diffusers">Diffusers</a>. 
+            We adopt <a href="https://huggingface.co/runwayml/stable-diffusion-inpainting">Stable Diffusion v1.5 inpainitng</a> as base model.
+            We use <a href="https://github.com/GoGoDuck912/Self-Correction-Human-Parsing/tree/master">SCHP</a> 
+            and <a href="https://github.com/facebookresearch/DensePose">DensePose</a> to automatically generate masks in our 
+            <a href="https://github.com/gradio-app/gradio">Gradio</a> App. 
+            Thanks to all the contributors!
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>
+      @misc{chong2024catvtonconcatenationneedvirtual,
+        title={CatVTON: Concatenation Is All You Need for Virtual Try-On with Diffusion Models}, 
+        author={Zheng Chong and Xiao Dong and Haoxiang Li and Shiyue Zhang and Wenqing Zhang and Xujie Zhang and Hanqing Zhao and Xiaodan Liang},
+        year={2024},
+        eprint={2407.15886},
+        archivePrefix={arXiv},
+        primaryClass={cs.CV},
+        url={https://arxiv.org/abs/2407.15886}, 
+      }
+    </code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link" href="https://arxiv.org/pdf/2307.13240.pdf">
+         <!-- TODO -->
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/Zheng-Chong/FashionMatric" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is modified from <a href="https://nerfies.github.io/">Nerfies</a>. Thanks for the great work!
+          </p>
+<!--          <p>-->
+<!--            Their source code is available on <a href="https://github.com/nerfies/nerfies.github.io">GitHub</a>.-->
+<!--          </p>-->
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

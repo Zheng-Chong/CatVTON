@@ -1,7 +1,6 @@
 model/__pycache__
 model/DensePose/__pycache__
 model/SCHP/__pycache__
-index.html
 resource/demo/output
 resource/demo/example/.DS_Store
 model/SCHP/*/__pycache__

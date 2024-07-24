@@ -103,9 +103,14 @@ CUDA_VISIBLE_DEVICES=0 python inference.py \
 
 
 ## Acknowledgement
-Our code is modified based on [Diffusers](https://github.com/huggingface/diffusers). We use [SCHP](https://github.com/GoGoDuck912/Self-Correction-Human-Parsing/tree/master) and [DensePose](https://github.com/facebookresearch/DensePose) to automaticly generate mask in our [Gradio](https://github.com/gradio-app/gradio) App. Thanks to all the contributors!
-## Citation
+Our code is modified based on [Diffusers](https://github.com/huggingface/diffusers).  
+We adopt [Stable Diffusion v1.5 inpainting](https://huggingface.co/runwayml/stable-diffusion-inpainting) as base model.  
+We use [SCHP](https://github.com/GoGoDuck912/Self-Correction-Human-Parsing/tree/master)  
+and [DensePose](https://github.com/facebookresearch/DensePose) to automatically generate masks in our 
+[Gradio](https://github.com/gradio-app/gradio) App.  
+Thanks to all the contributors!
 
+## Citation
 
 ```
 @misc{chong2024catvtonconcatenationneedvirtual,
