@@ -3,17 +3,20 @@
 # <center> 🐈 CatVTON: Concatenation Is All You Need for Virtual Try-On with Diffusion Models
 
 <div style="display: flex; justify-content: center; align-items: center;">
-  <a href="https://github.com/Zheng-Chong/CatVTON" style="margin: 0 2px;">
-    <img src='https://img.shields.io/badge/arXiv-Paper(soon)-red?style=flat&logo=arXiv&logoColor=red' alt='arxiv'>
-  </a>
-  <a href="http://120.76.142.206:8888" style="margin: 0 2px;">
-    <img src='https://img.shields.io/badge/Demo-Gradio-orange?style=flat&logo=Gradio&logoColor=red' alt='Demo'>
+  <a href="http://arxiv.org/abs/2407.15886" style="margin: 0 2px;">
+    <img src='https://img.shields.io/badge/arXiv-2407.15886-red?style=flat&logo=arXiv&logoColor=red' alt='arxiv'>
   </a>
   <a href='https://huggingface.co/zhengchong/CatVTON' style="margin: 0 2px;">
     <img src='https://img.shields.io/badge/Hugging Face-ckpts-orange?style=flat&logo=HuggingFace&logoColor=orange' alt='huggingface'>
   </a>
   <a href="https://github.com/Zheng-Chong/CatVTON" style="margin: 0 2px;">
     <img src='https://img.shields.io/badge/GitHub-Repo-blue?style=flat&logo=GitHub' alt='GitHub'>
+  </a>
+  <a href="http://120.76.142.206:8888" style="margin: 0 2px;">
+    <img src='https://img.shields.io/badge/Demo-Gradio-gold?style=flat&logo=Gradio&logoColor=red' alt='Demo'>
+  </a>
+  <a href='https://huggingface.co/zhengchong/CatVTON' style="margin: 0 2px;">
+    <img src='https://img.shields.io/badge/Webpage-Project(soon)-silver?style=flat&logo=&logoColor=orange' alt='webpage'>
   </a>
   <a href="https://github.com/Zheng-Chong/CatVTON/LICENCE" style="margin: 0 2px;">
     <img src='https://img.shields.io/badge/License-CC BY--NC--SA--4.0-lightgreen?style=flat&logo=Lisence' alt='License'>
@@ -30,6 +33,7 @@
 
 
 ## Updates
+- **`2024/7/24`**: Our [**Paper on ArXiv**](http://arxiv.org/abs/2407.15886) is available now 🥳!
 - **`2024/7/22`**: Our [**App Code**](https://github.com/Zheng-Chong/CatVTON/blob/main/app.py) is released, deploy and enjoy CatVTON on your own mechine 🎉!
 - **`2024/7/21`**: Our [**Inference Code**](https://github.com/Zheng-Chong/CatVTON/blob/main/inference.py) and [**Weights** 🤗](https://huggingface.co/zhengchong/CatVTON) are released.
 - **`2024/7/11`**: Our [**Online Demo**](http://120.76.142.206:8888) is released 😁.
@@ -100,8 +104,17 @@ CUDA_VISIBLE_DEVICES=0 python inference.py \
 
 ## Acknowledgement
 Our code is modified based on [Diffusers](https://github.com/huggingface/diffusers). We use [SCHP](https://github.com/GoGoDuck912/Self-Correction-Human-Parsing/tree/master) and [DensePose](https://github.com/facebookresearch/DensePose) to automaticly generate mask in our [Gradio](https://github.com/gradio-app/gradio) App. Thanks to all the contributors!
-<!-- ## Citation
+## Citation
 
 
 ```
-``` -->
+@misc{chong2024catvtonconcatenationneedvirtual,
+      title={CatVTON: Concatenation Is All You Need for Virtual Try-On with Diffusion Models}, 
+      author={Zheng Chong and Xiao Dong and Haoxiang Li and Shiyue Zhang and Wenqing Zhang and Xujie Zhang and Hanqing Zhao and Xiaodan Liang},
+      year={2024},
+      eprint={2407.15886},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2407.15886}, 
+}
+```
