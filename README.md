@@ -112,7 +112,7 @@ All the materials, including code, checkpoints, and demo, are made available und
 
 ## Citation
 
-```
+```bibtex
 @misc{chong2024catvtonconcatenationneedvirtual,
       title={CatVTON: Concatenation Is All You Need for Virtual Try-On with Diffusion Models}, 
       author={Zheng Chong and Xiao Dong and Haoxiang Li and Shiyue Zhang and Wenqing Zhang and Xujie Zhang and Hanqing Zhao and Xiaodan Liang},
