@@ -33,7 +33,8 @@
 
 
 ## Updates
-- **`2024/7/24`**: Our [**Paper on ArXiv**](http://arxiv.org/abs/2407.15886) is available now 🥳!
+- **`2024/7/27`**: We provide code and workflow for deploying CatVTON on [**ComfyUI**](https://github.com/Zheng-Chong/CatVTON/releases/tag/ComfyUI) 💥.
+- **`2024/7/24`**: Our [**Paper on ArXiv**](http://arxiv.org/abs/2407.15886) is available 🥳!
 - **`2024/7/22`**: Our [**App Code**](https://github.com/Zheng-Chong/CatVTON/blob/main/app.py) is released, deploy and enjoy CatVTON on your own mechine 🎉!
 - **`2024/7/21`**: Our [**Inference Code**](https://github.com/Zheng-Chong/CatVTON/blob/main/inference.py) and [**Weights** 🤗](https://huggingface.co/zhengchong/CatVTON) are released.
 - **`2024/7/11`**: Our [**Online Demo**](http://120.76.142.206:8888) is released 😁.
@@ -41,7 +42,23 @@
 ## Installation
 An [Installation Guide](https://github.com/Zheng-Chong/CatVTON/blob/main/INSTALL.md) is provided to help build the conda environment for CatVTON. When deploying the app, you will need Detectron2 & DensePose, but these are not required for inference on datasets. Install the packages according to your needs.
 
-## Deployment (Gradio App)
+## Deployment 
+### ComfyUI Workflow
+We have modified the main code to enable easy deployment of CatVTON on [ComfyUI](https://github.com/comfyanonymous/ComfyUI). Due to the incompatibility of the code structure, we have released this part in the [Releases](https://github.com/Zheng-Chong/CatVTON/releases/tag/ComfyUI), which includes the code placed under `custom_nodes` of ComfyUI and our workflow JSON files.
+
+To deploy CatVTON to your ComfyUI, follow these steps:
+1. Install requirements for both CatVTON and ComfyUI, refer to [Installation Guide for CatVTON](https://github.com/Zheng-Chong/CatVTON/blob/main/INSTALL.md) and [Installation Guide for ComfyUI](https://github.com/comfyanonymous/ComfyUI?tab=readme-ov-file#installing).
+2. Download [`ComfyUI-CatVTON.zip`](https://github.com/Zheng-Chong/CatVTON/releases/download/ComfyUI/ComfyUI-CatVTON.zip) and unzip it in the `custom_nodes` folder under ComfyUI project.
+3. Run the ComfyUI.
+4. Download [`catvton_workflow.json`](https://github.com/Zheng-Chong/CatVTON/releases/download/ComfyUI/catvton_workflow.json) and drag it into you ComfyUI webpage and enjoy 😆!
+
+
+<div align="center">
+  <img src="resource/img/comfyui.png" width="100%" height="100%"/>
+</div>
+
+
+### Gradio App
 
 To deploy the Gradio App for CatVTON on your own mechine, just run the following command, and checkpoints will be automaticly download from HuggingFace.
 
