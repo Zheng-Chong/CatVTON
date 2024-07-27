@@ -14,7 +14,7 @@ pip install -r requirements.txt
 **For inference only, the above packages are enough**. 
 
 ## 3. Detectron2 & DensePose
-If you want to deploy the gradio app with automatic mask generation, you need to install **Detectron2 & DensePose** by following commands:
+If you want to deploy CatVTOn with Gradio or ComfyUI with automatic mask generation, **Detectron2 & DensePose** are also needed, please install these packages by following commands:
 ```shell
 # Detectron2
 git clone https://github.com/facebookresearch/detectron2.git
