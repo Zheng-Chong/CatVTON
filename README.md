@@ -39,7 +39,7 @@
 - **`2024/7/11`**: Our [**Online Demo**](http://120.76.142.206:8888) is released 😁.
 
 ## Installation
-An [Installation Guide](https://github.com/Zheng-Chong/CatVTON/INSTALL.md) is provided to help build the conda environment for CatVTON. When deploying the app, you will need Detectron2 & DensePose, but these are not required for inference on datasets. Install the packages according to your needs.
+An [Installation Guide](https://github.com/Zheng-Chong/CatVTON/blob/main/INSTALL.md) is provided to help build the conda environment for CatVTON. When deploying the app, you will need Detectron2 & DensePose, but these are not required for inference on datasets. Install the packages according to your needs.
 
 ## Deployment (Gradio App)
 
