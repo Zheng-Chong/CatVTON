@@ -52,6 +52,8 @@ To deploy CatVTON to your ComfyUI, follow these steps:
 3. Run the ComfyUI.
 4. Download [`catvton_workflow.json`](https://github.com/Zheng-Chong/CatVTON/releases/download/ComfyUI/catvton_workflow.json) and drag it into you ComfyUI webpage and enjoy 😆!
 
+> Problems under Windows OS, please refer to [issue#8](https://github.com/Zheng-Chong/CatVTON/issues/8).
+> 
 When you run the CatVTON workflow for the first time, the weight files will be automatically downloaded, which usually takes dozens of minutes.
 
 <div align="center">
