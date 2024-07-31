@@ -8,3 +8,4 @@ resource/demo/example/.DS_Store
 densepose_
 .vscode
 playground.py
+output

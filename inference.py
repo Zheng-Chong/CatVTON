@@ -261,7 +261,8 @@ def main():
             "fp16": torch.float16,
             "bf16": torch.bfloat16,
         }[args.mixed_precision],
-        device="cuda"
+        device="cuda",
+        skip_safety_check=True
     )
     # Dataset
     if args.dataset_name == "vitonhd":
