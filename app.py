@@ -126,6 +126,7 @@ automasker = AutoMasker(
     device='cuda', 
 )
 
+
 def submit_function(
     person_image,
     cloth_image,
@@ -170,19 +171,19 @@ def submit_function(
     mask = mask_processor.blur(mask, blur_factor=9)
 
     # Inference
-    try:
-        result_image = pipeline(
-            image=person_image,
-            condition_image=cloth_image,
-            mask=mask,
-            num_inference_steps=num_inference_steps,
-            guidance_scale=guidance_scale,
-            generator=generator
-        )[0]
-    except Exception as e:
-        raise gr.Error(
-            "An error occurred. Please try again later: {}".format(e)
-        )
+    # try:
+    result_image = pipeline(
+        image=person_image,
+        condition_image=cloth_image,
+        mask=mask,
+        num_inference_steps=num_inference_steps,
+        guidance_scale=guidance_scale,
+        generator=generator
+    )[0]
+    # except Exception as e:
+    #     raise gr.Error(
+    #         "An error occurred. Please try again later: {}".format(e)
+    #     )
     
     # Post-process
     masked_person = vis_mask(person_image, mask)
@@ -263,6 +264,11 @@ def app_gradio():
                         )
 
 
+                submit = gr.Button("Submit")
+                gr.Markdown(
+                    '<center><span style="color: #FF0000">!!! Click only Once, Wait for Delay !!!</span></center>'
+                )
+                
                 gr.Markdown(
                     '<span style="color: #808080; font-size: small;">Advanced options can adjust details:<br>1. `Inference Step` may enhance details;<br>2. `CFG` is highly correlated with saturation;<br>3. `Random seed` may improve pseudo-shadow.</span>'
                 )
@@ -283,7 +289,7 @@ def app_gradio():
                         choices=["result only", "input & result", "input & mask & result"],
                         value="input & mask & result",
                     )
-                submit = gr.Button("Submit")
+
             with gr.Column(scale=2, min_width=500):
                 result_image = gr.Image(interactive=False, label="Result")
                 with gr.Row():

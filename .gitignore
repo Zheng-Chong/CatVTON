@@ -1,8 +1,10 @@
+__pycache__
 model/__pycache__
 model/DensePose/__pycache__
 model/SCHP/__pycache__
+model/SCHP/*/__pycache__
 resource/demo/output
 resource/demo/example/.DS_Store
-model/SCHP/*/__pycache__
 densepose_
 .vscode
+playground.py
