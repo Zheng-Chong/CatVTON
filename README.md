@@ -108,7 +108,7 @@ For DressCode dataset, we provide [our preprocessed agnostic masks](https://driv
 ```
 
 ### Inference on VTIONHD/DressCode
-To run the inference on the DressCode or VITON-HD dataset, run the following command, checkpoints will be automaticly download from HuggingFace.
+To run the inference on the DressCode or VITON-HD dataset, run the following command, checkpoints will be automatically download from HuggingFace.
 
 ```PowerShell
 CUDA_VISIBLE_DEVICES=0 python inference.py \
