@@ -66,7 +66,7 @@ When you run the CatVTON workflow for the first time, the weight files will be a
 
 ### Gradio App
 
-To deploy the Gradio App for CatVTON on your own mechine, just run the following command, and checkpoints will be automaticly download from HuggingFace.
+To deploy the Gradio App for CatVTON on your own mechine, just run the following command, and checkpoints will be automatically download from HuggingFace.
 
 ```PowerShell
 CUDA_VISIBLE_DEVICES=0 python app.py \
