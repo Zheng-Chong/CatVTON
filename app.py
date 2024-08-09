@@ -12,7 +12,7 @@ from PIL import Image
 from model.cloth_masker import AutoMasker, vis_mask
 from model.pipeline import CatVTONPipeline
 from utils import init_weight_dtype, resize_and_crop, resize_and_padding
-
+import spaces
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Simple example of a training script.")
@@ -82,12 +82,6 @@ def parse_args():
             " flag passed with the `accelerate.launch` command. Use this argument to override the accelerate config."
         ),
     )
-    # parser.add_argument(
-    #     "--enable_condition_noise",
-    #     action="store_true",
-    #     default=True,
-    #     help="Whether or not to enable condition noise.",
-    # )
     
     args = parser.parse_args()
     env_local_rank = int(os.environ.get("LOCAL_RANK", -1))
@@ -126,7 +120,7 @@ automasker = AutoMasker(
     device='cuda', 
 )
 
-
+@spaces.GPU
 def submit_function(
     person_image,
     cloth_image,
@@ -224,6 +218,9 @@ HEADER = """
   <a href="http://120.76.142.206:8888" style="margin: 0 2px;">
     <img src='https://img.shields.io/badge/Demo-Gradio-gold?style=flat&logo=Gradio&logoColor=red' alt='Demo'>
   </a>
+  <a href="https://huggingface.co/spaces/zhengchong/CatVTON" style="margin: 0 2px;">
+    <img src='https://img.shields.io/badge/Space-ZeroGPU-orange?style=flat&logo=Gradio&logoColor=red' alt='Demo'>
+  </a>
   <a href='https://zheng-chong.github.io/CatVTON/' style="margin: 0 2px;">
     <img src='https://img.shields.io/badge/Webpage-Project-silver?style=flat&logo=&logoColor=orange' alt='webpage'>
   </a>
@@ -231,10 +228,14 @@ HEADER = """
     <img src='https://img.shields.io/badge/License-CC BY--NC--SA--4.0-lightgreen?style=flat&logo=Lisence' alt='License'>
   </a>
 </div>
+<br>
+· This demo and our weights are only open for **Non-commercial Use**. <br>
+· SafetyChecker is set to filter NSFW content, but it may block normal results too. Please adjust the <span>`seed`</span> for normal outcomes.<br> 
+· Thanks to <a href="https://huggingface.co/zero-gpu-explorers">ZeroGPU</a> for providing GPU for <a href="https://huggingface.co/spaces/zhengchong/CatVTON">Our HuggingFace Space.</a> 
 """
 
 def app_gradio():
-    with gr.Blocks() as demo:
+    with gr.Blocks(title="CatVTON") as demo:
         gr.Markdown(HEADER)
         with gr.Row():
             with gr.Column(scale=1, min_width=350):
