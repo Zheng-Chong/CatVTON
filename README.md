@@ -1,5 +1,3 @@
-
-
 # 🐈 CatVTON: Concatenation Is All You Need for Virtual Try-On with Diffusion Models
 
 <div style="display: flex; justify-content: center; align-items: center;">
@@ -27,20 +25,20 @@
   <img src="resource/img/teaser.jpg" width="100%" height="100%"/>
 </div>
 
-<!-- This repository is the official implementation of ***CatVTON: Concatenation Is All You Need for Virtual Try-On with Diffsuion Models***. -->
 
 **CatVTON** is a simple and efficient virtual try-on diffusion model with ***1) Lightweight Network (899.06M parameters totally)***, ***2) Parameter-Efficient Training (49.57M parameters trainable)*** and ***3) Simplified Inference (< 8G VRAM for 1024X768 resolution)***.
 
 
 ## Updates
-- **`2024/7/27`**: We provide code and workflow for deploying CatVTON on [**ComfyUI**](https://github.com/Zheng-Chong/CatVTON?tab=readme-ov-file#comfyui-workflow) 💥.
-- **`2024/7/24`**: Our [**Paper on ArXiv**](http://arxiv.org/abs/2407.15886) is available 🥳!
-- **`2024/7/22`**: Our [**App Code**](https://github.com/Zheng-Chong/CatVTON/blob/main/app.py) is released, deploy and enjoy CatVTON on your own mechine 🎉!
-- **`2024/7/21`**: Our [**Inference Code**](https://github.com/Zheng-Chong/CatVTON/blob/main/inference.py) and [**Weights** 🤗](https://huggingface.co/zhengchong/CatVTON) are released.
-- **`2024/7/11`**: Our [**Online Demo**](http://120.76.142.206:8888) is released 😁.
+- **`2024/08/09`**: [**Evaluation code**](https://github.com/Zheng-Chong/CatVTON?tab=readme-ov-file#3. Calculate Metrics) is provided to calculate metrics 📚.
+- **`2024/07/27`**: We provide code and workflow for deploying CatVTON on [**ComfyUI**](https://github.com/Zheng-Chong/CatVTON?tab=readme-ov-file#comfyui-workflow) 💥.
+- **`2024/07/24`**: Our [**Paper on ArXiv**](http://arxiv.org/abs/2407.15886) is available 🥳!
+- **`2024/07/22`**: Our [**App Code**](https://github.com/Zheng-Chong/CatVTON/blob/main/app.py) is released, deploy and enjoy CatVTON on your mechine 🎉!
+- **`2024/07/21`**: Our [**Inference Code**](https://github.com/Zheng-Chong/CatVTON/blob/main/inference.py) and [**Weights** 🤗](https://huggingface.co/zhengchong/CatVTON) are released.
+- **`2024/07/11`**: Our [**Online Demo**](http://120.76.142.206:8888) is released 😁.
 
 ## Installation
-An [Installation Guide](https://github.com/Zheng-Chong/CatVTON/blob/main/INSTALL.md) is provided to help build the conda environment for CatVTON. When deploying the app, you will need Detectron2 & DensePose, but these are not required for inference on datasets. Install the packages according to your needs.
+An [Installation Guide](https://github.com/Zheng-Chong/CatVTON/blob/main/INSTALL.md) is provided to help build the conda environment for CatVTON. When deploying the app, you will need Detectron2 & DensePose, which are not required for inference on datasets. Install the packages according to your needs.
 
 ## Deployment 
 ### ComfyUI Workflow
@@ -54,19 +52,19 @@ To deploy CatVTON to your ComfyUI, follow these steps:
 
 > Problems under Windows OS, please refer to [issue#8](https://github.com/Zheng-Chong/CatVTON/issues/8).
 > 
-When you run the CatVTON workflow for the first time, the weight files will be automatically downloaded, which usually takes dozens of minutes.
+When you run the CatVTON workflow for the first time, the weight files will be automatically downloaded, usually taking dozens of minutes.
 
 <div align="center">
   <img src="resource/img/comfyui-1.png" width="100%" height="100%"/>
 </div>
 
 <!-- <div align="center">
-  <img src="resource/img/comfyui.png" width="100%" height="100%"/>
+ <img src="resource/img/comfyui.png" width="100%" height="100%"/>
 </div> -->
 
 ### Gradio App
 
-To deploy the Gradio App for CatVTON on your own mechine, just run the following command, and checkpoints will be automaticly download from HuggingFace.
+To deploy the Gradio App for CatVTON on your machine, run the following command, and checkpoints will be automatically downloaded from HuggingFace.
 
 ```PowerShell
 CUDA_VISIBLE_DEVICES=0 python app.py \
@@ -77,7 +75,7 @@ CUDA_VISIBLE_DEVICES=0 python app.py \
 When using `bf16` precision, generating results with a resolution of `1024x768` only requires about `8G` VRAM.
 
 ## Inference
-### Data Preparation
+### 1. Data Preparation
 Before inference, you need to download the [VITON-HD](https://github.com/shadow2496/VITON-HD) or [DressCode](https://github.com/aimagelab/dress-code) dataset.
 Once the datasets are downloaded, the folder structures should look like these:
 ```
@@ -92,7 +90,7 @@ Once the datasets are downloaded, the folder structures should look like these:
 │   │   │   ├── [000006_00_mask.png | 000008_00.png | ...]
 ...
 ```
-For DressCode dataset, we provide [our preprocessed agnostic masks](https://drive.google.com/drive/folders/1uT88nYQl0n5qHz6zngb9WxGlX4ArAbVX?usp=share_link), download and place in `agnostic_masks` folders under each category.
+For the DressCode dataset, we provide [our preprocessed agnostic masks](https://drive.google.com/drive/folders/1uT88nYQl0n5qHz6zngb9WxGlX4ArAbVX?usp=share_link), download and place in `agnostic_masks` folders under each category.
 ```
 ├── DressCode
 |   ├── test_pairs_paired.txt
@@ -107,8 +105,8 @@ For DressCode dataset, we provide [our preprocessed agnostic masks](https://driv
 ...
 ```
 
-### Inference on VTIONHD/DressCode
-To run the inference on the DressCode or VITON-HD dataset, run the following command, checkpoints will be automaticly download from HuggingFace.
+### 2. Inference on VTIONHD/DressCode
+To run the inference on the DressCode or VITON-HD dataset, run the following command, checkpoints will be automatically downloaded from HuggingFace.
 
 ```PowerShell
 CUDA_VISIBLE_DEVICES=0 python inference.py \
@@ -123,10 +121,26 @@ CUDA_VISIBLE_DEVICES=0 python inference.py \
 --repaint \
 --eval_pair  
 ```
+### 3. Calculate Metrics
+
+After obtaining the inference results, calculate the metrics using the following command: 
+
+```PowerShell
+CUDA_VISIBLE_DEVICES=0 python eval.py \
+--gt_folder <your_path_to_gt_image_folder> \
+--pred_folder <your_path_to_predicted_image_folder> \
+--paired \
+--batch_size=16 \
+--num_workers=16 
+```
+
+-  `--gt_folder` and `--pred_folder` should be folders that contain **only images**.
+- To evaluate the results in a paired setting, use `--paired`; for an unpaired setting, simply omit it.
+- `--batch_size` and `--num_workers` should be adjusted based on your machine.
 
 
 ## Acknowledgement
-Our code is modified based on [Diffusers](https://github.com/huggingface/diffusers). We adopt [Stable Diffusion v1.5 inpainting](https://huggingface.co/runwayml/stable-diffusion-inpainting) as base model. We use [SCHP](https://github.com/GoGoDuck912/Self-Correction-Human-Parsing/tree/master) and [DensePose](https://github.com/facebookresearch/DensePose) to automatically generate masks in our [Gradio](https://github.com/gradio-app/gradio) App and [ComfyUI](https://github.com/comfyanonymous/ComfyUI) workfow. Thanks to all the contributors!
+Our code is modified based on [Diffusers](https://github.com/huggingface/diffusers). We adopt [Stable Diffusion v1.5 inpainting](https://huggingface.co/runwayml/stable-diffusion-inpainting) as the base model. We use [SCHP](https://github.com/GoGoDuck912/Self-Correction-Human-Parsing/tree/master) and [DensePose](https://github.com/facebookresearch/DensePose) to automatically generate masks in our [Gradio](https://github.com/gradio-app/gradio) App and [ComfyUI](https://github.com/comfyanonymous/ComfyUI) workfow. Thanks to all the contributors!
 
 ## License
 All the materials, including code, checkpoints, and demo, are made available under the [Creative Commons BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) license. You are free to copy, redistribute, remix, transform, and build upon the project for non-commercial purposes, as long as you give appropriate credit and distribute your contributions under the same license.
@@ -136,12 +150,12 @@ All the materials, including code, checkpoints, and demo, are made available und
 
 ```bibtex
 @misc{chong2024catvtonconcatenationneedvirtual,
-      title={CatVTON: Concatenation Is All You Need for Virtual Try-On with Diffusion Models}, 
-      author={Zheng Chong and Xiao Dong and Haoxiang Li and Shiyue Zhang and Wenqing Zhang and Xujie Zhang and Hanqing Zhao and Xiaodan Liang},
-      year={2024},
-      eprint={2407.15886},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV},
-      url={https://arxiv.org/abs/2407.15886}, 
+ title={CatVTON: Concatenation Is All You Need for Virtual Try-On with Diffusion Models}, 
+ author={Zheng Chong and Xiao Dong and Haoxiang Li and Shiyue Zhang and Wenqing Zhang and Xujie Zhang and Hanqing Zhao and Xiaodan Liang},
+ year={2024},
+ eprint={2407.15886},
+ archivePrefix={arXiv},
+ primaryClass={cs.CV},
+ url={https://arxiv.org/abs/2407.15886}, 
 }
 ```

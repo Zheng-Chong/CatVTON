@@ -8,9 +8,10 @@ from PIL import Image
 from accelerate.state import AcceleratorState
 from packaging import version
 import accelerate
-from typing import List, Optional, Tuple
-from torch.nn import functional as F
+from typing import List, Optional, Tuple, Set
 from diffusers import UNet2DConditionModel, SchedulerMixin
+from tqdm import tqdm
+
 
 # Compute DREAM and update latents for diffusion sampling
 def compute_dream_and_update_latents_for_inpaint(
@@ -284,80 +285,8 @@ def repaint_result(result, person_image, mask_image):
     # mask for result, ~mask for person
     result_ = result * mask + person * (1 - mask)
     return Image.fromarray(result_.astype(np.uint8))
-    
-    
-# 多通道 Sobel 算子处理 (用于获取模特图像的损失注意力图)
-def sobel(batch_image, mask=None, scale=4.0):
-    """
-    计算输入批量图像的Sobel梯度.
-
-    batch_image: 输入的批量图像张量，大小为 [batch, channels, height, width]
-    """
-    w, h = batch_image.size(3), batch_image.size(2)
-    pool_kernel = (max(w, h) // 16) * 2 + 1
-    # 定义Sobel核
-    kernel_x = (
-        torch.tensor([[-1, 0, 1], [-2, 0, 2], [-1, 0, 1]], dtype=torch.float32)
-        .view(1, 1, 3, 3)
-        .to(batch_image.device)
-        .repeat(1, batch_image.size(1), 1, 1)
-    )
-    kernel_y = (
-        torch.tensor([[-1, -2, -1], [0, 0, 0], [1, 2, 1]], dtype=torch.float32)
-        .view(1, 1, 3, 3)
-        .to(batch_image.device)
-        .repeat(1, batch_image.size(1), 1, 1)
-    )
-    # 初始化梯度张量
-    grad_x = torch.zeros_like(batch_image)
-    grad_y = torch.zeros_like(batch_image)
-    # 边缘填充
-    batch_image = F.pad(batch_image, (1, 1, 1, 1), mode="reflect")
-    # 应用Sobel算子
-    grad_x = F.conv2d(batch_image, kernel_x, padding=0)
-    grad_y = F.conv2d(batch_image, kernel_y, padding=0)
-    # 计算梯度的幅度
-    grad_magnitude = torch.sqrt(grad_x.pow(2) + grad_y.pow(2))
-    # Mask 处理
-    if mask is not None:
-        grad_magnitude = grad_magnitude * mask
-    # 剃度裁剪
-    grad_magnitude = torch.clamp(grad_magnitude, 0.2, 2.5)
-    # 平均池化
-    grad_magnitude = F.avg_pool2d(
-        grad_magnitude, kernel_size=pool_kernel, stride=1, padding=pool_kernel // 2
-    )
-    # 归一化
-    grad_magnitude = (grad_magnitude / grad_magnitude.max()) * scale
-    return grad_magnitude
 
 
-# Sobel 加权平方误差, 增强边缘区域的损失（直接用于损失计算）
-def sobel_aug_squared_error(x, y, reference, mask=None, reduction="mean"):
-    """
-    计算x,y的逐元素平方误差，其中x和y是图像张量.
-    然后利用 x 的 sobel 结果作为权重，计算加权平方误差.
-    x: Tensor, shape [batch, channels, height, width]
-    y: Tensor, shape [batch, channels, height, width]
-    """
-    ref_sobel = sobel(reference, mask=mask)  # 计算 sobel 梯度作为损失权重
-    if ref_sobel.isnan().any():
-        print("Error: NaN Sobel Gradient")
-        loss = F.mse_loss(x, y, reduction="mean")  # 如果梯度为nan，则直接退化为MSE损失
-    else:
-        squared_error = (x - y).pow(2)
-        weighted_squared_error = squared_error * ref_sobel
-        if reduction == "mean":
-            loss = weighted_squared_error.mean()
-        elif reduction == "sum":
-            loss = weighted_squared_error.sum()
-        elif reduction == "none":
-            loss = weighted_squared_error
-    # print("WSE Loss:", loss.mean(), loss.dtype)
-    return loss
-
-
-# 准备图像（转换为 Batch 张量）
 def prepare_image(image):
     if isinstance(image, torch.Tensor):
         # Batch single image
@@ -429,63 +358,6 @@ def numpy_to_pil(images):
         pil_images = [Image.fromarray(image) for image in images]
 
     return pil_images
-
-
-def load_eval_image_pairs(root, mode="logo"):
-    # TODO 加载测试图像对，包括配对和非配对的图像对
-    test_name = "test"
-    person_image_paths = [
-        os.path.join(root, test_name, "image", _)
-        for _ in os.listdir(os.path.join(root, test_name, "image"))
-        if _.endswith(".jpg")
-    ]
-    cloth_image_paths = [
-        person_image_path.replace("image", "cloth")
-        for person_image_path in person_image_paths
-    ]
-    # 包含图案和文字的部分图像
-    if mode == "logo":
-        filter_pairs = [
-            6648,
-            6744,
-            6967,
-            6985,
-            14031,
-            12358,
-            4963,
-            4680,
-            499,
-            396,
-            345,
-            6648,
-            6744,
-            6967,
-            6985,
-            7510,
-            8205,
-            8254,
-            10545,
-            11485,
-            11632,
-            12354,
-            13144,
-            14112,
-            12570,
-            11766,
-        ]
-        filter_pairs.sort()
-        filter_pairs = [f"{_:05d}_00.jpg" for _ in filter_pairs]
-        cloth_image_paths = [
-            cloth_image_paths[i]
-            for i in range(len(cloth_image_paths))
-            if os.path.basename(cloth_image_paths[i]) in filter_pairs
-        ]
-        person_image_paths = [
-            person_image_paths[i]
-            for i in range(len(person_image_paths))
-            if os.path.basename(person_image_paths[i]) in filter_pairs
-        ]
-    return cloth_image_paths, person_image_paths
 
 
 def tensor_to_image(tensor: torch.Tensor):
@@ -619,51 +491,18 @@ def resize_and_padding(image, size):
     return padding
 
 
+def scan_files_in_dir(directory, postfix: Set[str] = None, progress_bar: tqdm = None) -> list:
+    file_list = []
+    progress_bar = tqdm(total=0, desc=f"Scanning", ncols=100) if progress_bar is None else progress_bar
+    for entry in os.scandir(directory):
+        if entry.is_file():
+            if postfix is None or os.path.splitext(entry.path)[1] in postfix:
+                file_list.append(entry)
+                progress_bar.total += 1
+                progress_bar.update(1)
+        elif entry.is_dir():
+            file_list += scan_files_in_dir(entry.path, postfix=postfix, progress_bar=progress_bar)
+    return file_list
 
 if __name__ == "__main__":
-    import torch
-    import torch.nn.functional as F
-    from torchvision import transforms
-    from PIL import Image, ImageFilter
-    import numpy as np
-
-    def vis_sobel_weight(image_path, mask_path) -> PIL.Image.Image:
-
-        image = Image.open(image_path).convert("RGB")
-        w, h = image.size
-        l_w, l_h = w // 8, h // 8
-        image = image.resize((l_w, l_h))
-        mask = Image.open(mask_path).convert("L").resize((l_w, l_h))
-        image_pt = transforms.ToTensor()(image).unsqueeze(0).to("cuda")
-        mask_pt = transforms.ToTensor()(mask).unsqueeze(0).to("cuda")
-        sobel_pt = sobel(image_pt, mask_pt, scale=1.0)
-        sobel_image = sobel_pt.squeeze().cpu().numpy()
-        sobel_image = Image.fromarray((sobel_image * 255).astype(np.uint8))
-        sobel_image = sobel_image.resize((w, h), resample=Image.NEAREST)
-        # 图像平滑
-        sobel_image = sobel_image.filter(ImageFilter.SMOOTH)
-        from data.utils import grayscale_to_heatmap
-
-        sobel_image = grayscale_to_heatmap(sobel_image)
-        image = Image.open(image_path).convert("RGB").resize((w, h))
-        sobel_image = Image.blend(image, sobel_image, alpha=0.5)
-        return sobel_image
-
-    save_folder = "./sobel_vis-2.0"
-    if not os.path.exists(save_folder):
-        os.makedirs(save_folder)
-    from data.utils import scan_files_in_dir
-
-    for i in scan_files_in_dir(
-        "/home/chongzheng/Projects/try-on-project/Datasets/VITONHD-1024/test/Images"
-    ):
-        image_path = i.path
-
-        if i.path.endswith("-1.jpg"):
-            result_path = os.path.join(save_folder, os.path.basename(image_path))
-
-            mask_path = image_path.replace("Images", "AgnosticMask").replace(
-                "-1.jpg", "_mask-1.png"
-            )
-            vis_sobel_weight(image_path, mask_path).save(result_path)
-    pass
+    ...

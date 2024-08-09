@@ -12,7 +12,6 @@ from PIL import Image
 from model.cloth_masker import AutoMasker, vis_mask
 from model.pipeline import CatVTONPipeline
 from utils import init_weight_dtype, resize_and_crop, resize_and_padding
-import spaces
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Simple example of a training script.")
