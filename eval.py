@@ -132,7 +132,6 @@ def eval(args):
     row = [fid_, kid_]
     if args.paired:
         header += ["SSIM", "LPIPS"]
-        # to numpy
         ssim_ = ssim(dataloader).item()
         lpips_ = lpips(dataloader).item()
         row += [ssim_, lpips_]
