@@ -119,7 +119,6 @@ automasker = AutoMasker(
     device='cuda', 
 )
 
-@spaces.GPU
 def submit_function(
     person_image,
     cloth_image,
@@ -228,9 +227,10 @@ HEADER = """
   </a>
 </div>
 <br>
-· This demo and our weights are only open for **Non-commercial Use**. <br>
+· This demo and our weights are only for <span>Non-commercial Use</span>. <br>
+· You can try CatVTON in our <a href="https://huggingface.co/spaces/zhengchong/CatVTON">HuggingFace Space</a> or our <a href="http://120.76.142.206:8888">online demo</a> (run on 3090). <br>
+· Thanks to <a href="https://huggingface.co/zero-gpu-explorers">ZeroGPU</a> for providing A100 for our <a href="https://huggingface.co/spaces/zhengchong/CatVTON">HuggingFace Space</a>. <br>
 · SafetyChecker is set to filter NSFW content, but it may block normal results too. Please adjust the <span>`seed`</span> for normal outcomes.<br> 
-· Thanks to <a href="https://huggingface.co/zero-gpu-explorers">ZeroGPU</a> for providing GPU for <a href="https://huggingface.co/spaces/zhengchong/CatVTON">Our HuggingFace Space.</a> 
 """
 
 def app_gradio():

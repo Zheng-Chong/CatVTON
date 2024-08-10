@@ -13,6 +13,9 @@
   <a href="http://120.76.142.206:8888" style="margin: 0 2px;">
     <img src='https://img.shields.io/badge/Demo-Gradio-gold?style=flat&logo=Gradio&logoColor=red' alt='Demo'>
   </a>
+  <a href="https://huggingface.co/spaces/zhengchong/CatVTON" style="margin: 0 2px;">
+    <img src='https://img.shields.io/badge/Space-ZeroGPU-orange?style=flat&logo=Gradio&logoColor=red' alt='Demo'>
+  </a>
   <a href='https://zheng-chong.github.io/CatVTON/' style="margin: 0 2px;">
     <img src='https://img.shields.io/badge/Webpage-Project-silver?style=flat&logo=&logoColor=orange' alt='webpage'>
   </a>
@@ -21,21 +24,27 @@
   </a>
 </div>
 
-<div align="center">
-  <img src="resource/img/teaser.jpg" width="100%" height="100%"/>
-</div>
 
 
 **CatVTON** is a simple and efficient virtual try-on diffusion model with ***1) Lightweight Network (899.06M parameters totally)***, ***2) Parameter-Efficient Training (49.57M parameters trainable)*** and ***3) Simplified Inference (< 8G VRAM for 1024X768 resolution)***.
+<div align="center">
+  <img src="resource/img/teaser.jpg" width="85%" height="100%"/>
+</div>
+
+
 
 
 ## Updates
+- **`2024/08/10`**: Our 🤗 [**HuggingFace Space**](https://huggingface.co/spaces/zhengchong/CatVTON) is available now! Thanks for the grant from [**ZeroGPU**](https://huggingface.co/zero-gpu-explorers)！
 - **`2024/08/09`**: [**Evaluation code**](https://github.com/Zheng-Chong/CatVTON?tab=readme-ov-file#3-calculate-metrics) is provided to calculate metrics 📚.
 - **`2024/07/27`**: We provide code and workflow for deploying CatVTON on [**ComfyUI**](https://github.com/Zheng-Chong/CatVTON?tab=readme-ov-file#comfyui-workflow) 💥.
 - **`2024/07/24`**: Our [**Paper on ArXiv**](http://arxiv.org/abs/2407.15886) is available 🥳!
 - **`2024/07/22`**: Our [**App Code**](https://github.com/Zheng-Chong/CatVTON/blob/main/app.py) is released, deploy and enjoy CatVTON on your mechine 🎉!
 - **`2024/07/21`**: Our [**Inference Code**](https://github.com/Zheng-Chong/CatVTON/blob/main/inference.py) and [**Weights** 🤗](https://huggingface.co/zhengchong/CatVTON) are released.
 - **`2024/07/11`**: Our [**Online Demo**](http://120.76.142.206:8888) is released 😁.
+
+
+
 
 ## Installation
 An [Installation Guide](https://github.com/Zheng-Chong/CatVTON/blob/main/INSTALL.md) is provided to help build the conda environment for CatVTON. When deploying the app, you will need Detectron2 & DensePose, which are not required for inference on datasets. Install the packages according to your needs.
