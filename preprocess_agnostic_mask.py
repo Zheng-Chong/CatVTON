@@ -12,8 +12,7 @@ def parse_args():
     parser.add_argument(
         "--data_root_path", 
         type=str, 
-        default="/home/chongzheng_p23/data/Projects/CatVTON_eval/Datasets/DressCode_Test_1024", # FIXME
-        # required=True,
+        required=True,
         help="Path to the dataset to evaluate."
     )
     parser.add_argument(
