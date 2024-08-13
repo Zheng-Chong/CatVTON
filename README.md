@@ -99,7 +99,7 @@ Once the datasets are downloaded, the folder structures should look like these:
 │   │   │   ├── [000006_00_mask.png | 000008_00.png | ...]
 ...
 ```
-For the DressCode dataset, we provide [our preprocessed agnostic masks](https://drive.google.com/drive/folders/1uT88nYQl0n5qHz6zngb9WxGlX4ArAbVX?usp=share_link), download and place in `agnostic_masks` folders under each category.
+
 ```
 ├── DressCode
 |   ├── test_pairs_paired.txt
@@ -112,6 +112,11 @@ For the DressCode dataset, we provide [our preprocessed agnostic masks](https://
 │   │   ├── agnostic_masks
 │   │   │   ├── [013563_0.png| 013564_0.png | ...]
 ...
+```
+For the DressCode dataset, we provide script to preprocessed agnostic masks, run the following command:
+```PowerShell
+CUDA_VISIBLE_DEVICES=0 python preprocess_agnostic_mask.py \
+--data_root_path <your_path_to_DressCode> 
 ```
 
 ### 2. Inference on VTIONHD/DressCode
