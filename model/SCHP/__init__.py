@@ -81,12 +81,27 @@ class SCHP:
 
 
     def load_ckpt(self, ckpt_path):
+        rename_map = {
+            "decoder.conv3.2.weight": "decoder.conv3.3.weight",
+            "decoder.conv3.3.weight": "decoder.conv3.4.weight",
+            "decoder.conv3.3.bias": "decoder.conv3.4.bias",
+            "decoder.conv3.3.running_mean": "decoder.conv3.4.running_mean",
+            "decoder.conv3.3.running_var": "decoder.conv3.4.running_var",
+            "fushion.3.weight": "fushion.4.weight",
+            "fushion.3.bias": "fushion.4.bias",
+        }
         state_dict = torch.load(ckpt_path, map_location='cpu')['state_dict']
         new_state_dict = OrderedDict()
         for k, v in state_dict.items():
             name = k[7:]  # remove `module.`
             new_state_dict[name] = v
-        self.model.load_state_dict(new_state_dict)
+        new_state_dict_ = OrderedDict()
+        for k, v in list(new_state_dict.items()):
+            if k in rename_map:
+                new_state_dict_[rename_map[k]] = v
+            else:
+                new_state_dict_[k] = v
+        self.model.load_state_dict(new_state_dict_, strict=False)
 
     def _box2cs(self, box):
         x, y, w, h = box[:4]
@@ -148,7 +163,8 @@ class SCHP:
             meta_list = [meta]
                 
         output = self.model(image)
-        upsample_outputs = self.upsample(output[0][-1])
+        # upsample_outputs = self.upsample(output[0][-1])
+        upsample_outputs = self.upsample(output)
         upsample_outputs = upsample_outputs.permute(0, 2, 3, 1)  # BCHW -> BHWC
 
         output_img_list = []
