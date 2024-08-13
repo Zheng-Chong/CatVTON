@@ -35,6 +35,7 @@
 
 
 ## Updates
+- **`2024/08/13`**: We localize DensePose & SCHP to avoid certain environment issues.
 - **`2024/08/10`**: Our 🤗 [**HuggingFace Space**](https://huggingface.co/spaces/zhengchong/CatVTON) is available now! Thanks for the grant from [**ZeroGPU**](https://huggingface.co/zero-gpu-explorers)！
 - **`2024/08/09`**: [**Evaluation code**](https://github.com/Zheng-Chong/CatVTON?tab=readme-ov-file#3-calculate-metrics) is provided to calculate metrics 📚.
 - **`2024/07/27`**: We provide code and workflow for deploying CatVTON on [**ComfyUI**](https://github.com/Zheng-Chong/CatVTON?tab=readme-ov-file#comfyui-workflow) 💥.
@@ -47,7 +48,14 @@
 
 
 ## Installation
-An [Installation Guide](https://github.com/Zheng-Chong/CatVTON/blob/main/INSTALL.md) is provided to help build the conda environment for CatVTON. When deploying the app, you will need Detectron2 & DensePose, which are not required for inference on datasets. Install the packages according to your needs.
+
+Create a conda environment & Install requirments
+```shell
+conda create -n catvton python==3.9.0
+conda activate catvton
+cd CatVTON-main  # or your path to CatVTON project dir
+pip install -r requirements.txt
+```
 
 ## Deployment 
 ### ComfyUI Workflow
