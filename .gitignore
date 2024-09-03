@@ -6,6 +6,7 @@ model/SCHP/*/__pycache__
 resource/demo/output
 resource/demo/example/.DS_Store
 Models
+Datasets
 densepose_
 .vscode
 playground.py
